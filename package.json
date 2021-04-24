@@ -4,7 +4,9 @@
   "description": "React Globe component built with D3",
   "author": "Maciek Sitkowski",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "lint": "eslint '**/*.(js|jsx|ts|tsx)'"
+  },
   "homepage": "https://github.com/sitek94/react-d3-globe",
   "repository": {
     "type": "git",
@@ -19,5 +21,11 @@
     "d3",
     "svg",
     "globe"
-  ]
+  ],
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-plugin-react": "^7.23.2"
+  }
 }
