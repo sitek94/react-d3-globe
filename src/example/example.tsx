@@ -3,7 +3,7 @@ import './example.scss';
 
 export function Example() {
   return (
-    <div>
+    <div className="Example">
       <h1>Example</h1>
     </div>
   );
