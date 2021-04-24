@@ -1,0 +1,23 @@
+{
+  "name": "react-d3-globe",
+  "version": "1.0.0",
+  "description": "React Globe component built with D3",
+  "author": "Maciek Sitkowski",
+  "main": "index.js",
+  "scripts": {},
+  "homepage": "https://github.com/sitek94/react-d3-globe",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/sitek94/react-d3-globe.git"
+  },
+  "bugs": {
+    "url": "https://github.com/sitek94/react-d3-globe/issues"
+  },
+  "license": "MIT",
+  "keywords": [
+    "react",
+    "d3",
+    "svg",
+    "globe"
+  ]
+}
