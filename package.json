@@ -5,9 +5,9 @@
   "author": "Maciek Sitkowski",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint '**/*.{js|ts|tsx}'",
+    "lint": "eslint \"**/*.+(js|ts|tsx)\"",
     "lint:fix": "npm run lint -- --fix",
-    "format": "prettier '**/*.{js,ts,tsx}' --write",
+    "format": "prettier \"**/*.+(js|ts|tsx)\" --write",
     "prepare": "husky install"
   },
   "homepage": "https://github.com/sitek94/react-d3-globe",
