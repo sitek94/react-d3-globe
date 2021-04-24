@@ -1,4 +1,5 @@
 import * as React from 'react';
+import './example.scss';
 
 export function Example() {
   return (
