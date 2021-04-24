@@ -16,4 +16,10 @@ describe('Example', () => {
 
     expect(screen.getByText('Example')).toBeTruthy();
   });
+
+  it(`renders correctly when passed "name" prop`, () => {
+    render(<Example name="Maciek" />);
+
+    expect(screen.getByText('Maciek')).toBeTruthy();
+  });
 });

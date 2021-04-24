@@ -18,6 +18,9 @@
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier \"**/*.+(js|ts|tsx)\" --write",
     "test": "jest",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:staged": "jest --findRelatedTests",
     "prepare": "husky install"
   },
   "homepage": "https://github.com/sitek94/react-d3-globe",
