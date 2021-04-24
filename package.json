@@ -5,7 +5,9 @@
   "author": "Maciek Sitkowski",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint '**/*.(js|jsx|ts|tsx)'"
+    "lint": "eslint '**/*.{js|ts|tsx}'",
+    "lint:fix": "npm run lint -- --fix",
+    "format": "prettier '**/*.{js,ts,tsx}' --write"
   },
   "homepage": "https://github.com/sitek94/react-d3-globe",
   "repository": {
@@ -26,6 +28,7 @@
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "eslint": "^7.25.0",
-    "eslint-plugin-react": "^7.23.2"
+    "eslint-plugin-react": "^7.23.2",
+    "prettier": "2.2.1"
   }
 }

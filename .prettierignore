@@ -1,0 +1,8 @@
+# Build output
+dist
+
+# Dependency directories
+node_modules
+
+# Coverage directory
+coverage
