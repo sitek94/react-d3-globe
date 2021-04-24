@@ -17,6 +17,7 @@
     "lint": "eslint \"**/*.+(js|ts|tsx)\"",
     "lint:fix": "npm run lint -- --fix",
     "format": "prettier \"**/*.+(js|ts|tsx)\" --write",
+    "test": "jest",
     "prepare": "husky install"
   },
   "homepage": "https://github.com/sitek94/react-d3-globe",
@@ -35,8 +36,11 @@
     "globe"
   ],
   "devDependencies": {
+    "@testing-library/react": "^11.2.6",
+    "@types/jest": "^26.0.22",
     "@types/react": "^17.0.3",
     "@types/react-dom": "^17.0.3",
+    "@types/react-test-renderer": "^17.0.1",
     "@typescript-eslint/eslint-plugin": "^4.22.0",
     "@typescript-eslint/parser": "^4.22.0",
     "babel-core": "^6.26.3",
@@ -44,13 +48,16 @@
     "eslint": "^7.25.0",
     "eslint-plugin-react": "^7.23.2",
     "husky": "^6.0.0",
+    "jest": "^26.6.3",
     "lint-staged": "^10.5.4",
     "prettier": "2.2.1",
+    "react-test-renderer": "^17.0.2",
     "rollup": "^2.45.2",
     "rollup-plugin-clear": "^2.0.7",
     "rollup-plugin-sass": "^1.2.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-typescript2": "^0.30.0",
+    "ts-jest": "^26.5.5",
     "typescript": "^4.2.4"
   },
   "peerDependencies": {
