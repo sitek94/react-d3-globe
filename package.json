@@ -22,7 +22,8 @@
     "test:coverage": "jest --coverage",
     "test:coveralls": "jest --coverage && coveralls < coverage/lcov.info",
     "test:staged": "jest --findRelatedTests",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "prepublishOnly": "npm run build:prod"
   },
   "homepage": "https://github.com/sitek94/react-d3-globe",
   "repository": {
