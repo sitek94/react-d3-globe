@@ -6,5 +6,13 @@
   "moduleFileExtensions": ["ts", "tsx", "js"],
   "moduleNameMapper": {
     "\\.s?css$": "<rootDir>/__mocks__/styles.js"
+  },
+  "coverageThreshold": {
+    "global": {
+      "branches": 25,
+      "functions": 25,
+      "lines": 25,
+      "statements": 25
+    }
   }
 }
