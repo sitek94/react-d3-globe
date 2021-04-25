@@ -1,1 +1,1 @@
-export * from './example';
+export { default as Globe } from './Globe';
