@@ -9,7 +9,7 @@ import { feature } from 'topojson-client';
 import { Topology } from 'topojson-specification';
 import { geoOrthographic, geoPath, select } from 'd3';
 
-const size = 150;
+const size = 400;
 const width = size;
 const height = size;
 const scale = size / 2;
@@ -18,7 +18,15 @@ const url = 'https://unpkg.com/world-atlas@2.0.2/land-110m.json';
 
 type Features = Feature<Geometry, GeoJsonProperties>[];
 
-export default function Globe() {
+export interface GlobeProps {
+  oceanColor?: string;
+  landColor?: string;
+}
+
+const blue = '#9fd9fa';
+const green = '#248415';
+
+export function Globe({ oceanColor = blue, landColor = green }: GlobeProps) {
   const divRef = React.useRef<HTMLDivElement>(null);
   const [features, setFeatures] = React.useState<Features>([]);
 
@@ -63,8 +71,8 @@ export default function Globe() {
 
   return (
     <div ref={divRef} data-testid="globe">
-      <svg width={width} height={height} fill="white">
-        <circle cx={width / 2} cy={height / 2} r={scale} />
+      <svg width={width} height={height} fill={landColor}>
+        <circle cx={width / 2} cy={height / 2} r={scale} fill={oceanColor} />
         <path />
       </svg>
     </div>

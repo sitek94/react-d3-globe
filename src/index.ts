@@ -1,1 +1,1 @@
-export { default as Globe } from './Globe';
+export { Globe } from './Globe';
