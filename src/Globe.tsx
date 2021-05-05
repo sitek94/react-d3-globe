@@ -1,47 +1,81 @@
 import * as React from 'react';
-import {
-  Feature,
-  FeatureCollection,
-  GeoJsonProperties,
-  Geometry,
-} from 'geojson';
-import { feature } from 'topojson-client';
-import { Topology } from 'topojson-specification';
 import { geoOrthographic, geoPath, select } from 'd3';
 
-const size = 400;
-const width = size;
-const height = size;
-const scale = size / 2;
-
-const url = 'https://unpkg.com/world-atlas@2.0.2/land-110m.json';
-
-type Features = Feature<Geometry, GeoJsonProperties>[];
+import { Features, getFeatures } from './getFeatures';
 
 export interface GlobeProps {
   oceanColor?: string;
   landColor?: string;
+
+  /**
+   * A shorthand for height and width of the SVG element
+   */
+  size?: number;
+
+  /**
+   * Height of the SVG
+   */
+  height?: number;
+
+  /**
+   * Width of the SVG
+   */
+  width?: number;
+
+  /**
+   *  Scale factor to be used for the projection
+   */
+  scale?: number;
+
+  /**
+   * A point specified as a two-dimensional array [longitude, latitude] in degrees.
+   * This will be the projection’s center.
+   */
+  center?: [number, number];
+
+  /**
+   * The x-axis rotation angle in degrees
+   */
+  rotateX?: number;
+
+  /**
+   * The y-axis rotation angle in degrees
+   */
+  rotateY?: number;
+
+  /**
+   * The z-axis rotation angle in degrees
+   */
+  rotateZ?: number;
 }
 
-const blue = '#9fd9fa';
-const green = '#248415';
+export function Globe({ size = 400, ...rest }: GlobeProps) {
+  const {
+    oceanColor = '#eaedee',
+    landColor = '#17181d',
+    height = size,
+    width = size,
+    scale = size / 2,
+    center = [0, 0],
+    rotateX = 0,
+    rotateY = 0,
+    rotateZ = 0,
+  } = rest;
 
-export function Globe({ oceanColor = blue, landColor = green }: GlobeProps) {
+  // Variables
+
+  const centerX = width / 2;
+  const centerY = height / 2;
+  const circleR = scale;
+  const rotation: [number, number, number] = [rotateX, rotateY, rotateZ];
+
+  // State
+
   const divRef = React.useRef<HTMLDivElement>(null);
   const [features, setFeatures] = React.useState<Features>([]);
 
   React.useEffect(() => {
-    async function fetchTopoJSONData() {
-      const res = await fetch(url);
-      const topology: Topology = await res.json();
-      const land = topology.objects.land;
-
-      if (land) {
-        const collection = feature(topology, land) as FeatureCollection;
-        setFeatures(collection.features);
-      }
-    }
-    fetchTopoJSONData();
+    getFeatures().then(setFeatures).catch(console.error);
   }, []);
 
   // Projection
@@ -49,10 +83,10 @@ export function Globe({ oceanColor = blue, landColor = green }: GlobeProps) {
     () =>
       geoOrthographic()
         .scale(scale)
-        .center([0, 0])
-        .rotate([0, -30])
-        .translate([width / 2, height / 2]),
-    [width, height, scale]
+        .center(center)
+        .rotate(rotation)
+        .translate([centerX, centerY]),
+    [scale, center, rotation, centerX, centerY]
   );
 
   // Path generator
@@ -72,7 +106,7 @@ export function Globe({ oceanColor = blue, landColor = green }: GlobeProps) {
   return (
     <div ref={divRef} data-testid="globe">
       <svg width={width} height={height} fill={landColor}>
-        <circle cx={width / 2} cy={height / 2} r={scale} fill={oceanColor} />
+        <circle cx={centerX} cy={centerY} r={circleR} fill={oceanColor} />
         <path />
       </svg>
     </div>
