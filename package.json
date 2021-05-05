@@ -1,6 +1,6 @@
 {
   "name": "react-d3-globe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "React Globe component built with D3",
   "author": "Maciek Sitkowski",
   "main": "dist/index.js",
