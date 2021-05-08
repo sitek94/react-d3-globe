@@ -1,6 +1,9 @@
 # Build output
 dist
 
+# storybook
+storybook-static
+
 # Dependency directories
 node_modules
 
