@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { geoOrthographic, geoPath, select } from 'd3';
 
-import { Features, getFeatures } from './getFeatures';
+import { useCountries } from './useCountries';
 
 export interface GlobeProps {
   oceanColor?: string;
@@ -72,11 +72,7 @@ export function Globe({ size = 400, ...rest }: GlobeProps) {
   // State
 
   const divRef = React.useRef<HTMLDivElement>(null);
-  const [features, setFeatures] = React.useState<Features>([]);
-
-  React.useEffect(() => {
-    getFeatures().then(setFeatures).catch(console.error);
-  }, []);
+  const { countries } = useCountries();
 
   // Projection
   const projection = React.useMemo(
@@ -94,20 +90,21 @@ export function Globe({ size = 400, ...rest }: GlobeProps) {
 
   // Update `path` when `pathGenerator` changes
   React.useEffect(() => {
-    if (divRef.current && features.length) {
-      select(divRef.current)
-        .select('path')
-        .data(features)
-        .join('path')
-        .attr('d', pathGenerator);
+    if (divRef.current && countries.length) {
+      const div = select(divRef.current);
+      const countriesPaths = div.selectAll(`path`);
+
+      countriesPaths.data(countries).join('path').attr('d', pathGenerator);
     }
-  }, [features, pathGenerator]);
+  }, [countries, pathGenerator]);
 
   return (
     <div ref={divRef} data-testid="globe">
       <svg width={width} height={height} fill={landColor}>
         <circle cx={centerX} cy={centerY} r={circleR} fill={oceanColor} />
-        <path />
+        {countries.map(({ id }) => (
+          <path key={id} />
+        ))}
       </svg>
     </div>
   );
