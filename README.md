@@ -7,8 +7,8 @@
 ## Motivation
 
 Some time ago I built [a small app](https://sitek94.github.io/pocket-globe-app/), where I implemented a clickable and draggable globe. Later,
-when building [my portfolio](https://macieksitkowski.com/), I wanted to showcase that project with a miniature version of such interactive globe. So I implemented it again.
+when building [my portfolio](https://macieksitkowski.com/), I wanted to showcase that project with a miniature version of such interactive globe. So I implemented it **again**.
 
-My goal is to create an npm package with this interactive globe component so that I can easily use it in both my app and portfolio. 
+My goal is to create an npm package with this interactive globe component so that I can easily use it in both my app and portfolio. Additionally, I'd like to learn a thing or two about building, deploying and publishing npm packages.  
 
 Who knows, maybe someone will find it useful as well.
